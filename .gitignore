@@ -14,3 +14,6 @@ outputs/
 reports/
 private_data/
 *.log
+
+# Practice web app runtime state (never publish real records)
+demo-web/data/

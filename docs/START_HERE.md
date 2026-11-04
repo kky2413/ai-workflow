@@ -20,6 +20,10 @@ git clone --depth 1 https://github.com/kky2413/ai-workflow ai-workflow-reference
 
 동일 이름의 폴더가 있으면 기존 파일을 삭제하지 말고 경로를 확인합니다. 참고 도구의 README와 실제 프로젝트의 README는 구분해야 합니다.
 
+## 웹사이트를 만들어야 한다면
+
+**[웹 과제 시작 문서](WEB_START_HERE.md)**를 먼저 보세요. 실제 프로젝트의 React/Vite/Next 등 기존 구성을 보존하고, [웹 개발 절차](WEB_APP_PLAYBOOK.md)와 [검증 방법](WEB_TESTING.md) 중 관련 부분만 사용하세요. Node 연습 프로젝트는 [demo-web](../demo-web/README.md)에 분리되어 있습니다. 자료가 필요 없으면 사용하지 않아도 됩니다.
+
 ## 3. 필요한 도구만 고릅니다
 
 | 상황 | 도구 |
@@ -33,6 +37,8 @@ git clone --depth 1 https://github.com/kky2413/ai-workflow ai-workflow-reference
 | 출력 파일을 확인한다 | verify_outputs.py |
 | 개발 환경이 낯설다 | environment_check.py |
 | 로컬 웹 서버가 동작하는지 본다 | http_smoke.py |
+| 웹 프로젝트의 프레임워크·진입점을 조사한다 | web_project_audit.py |
+| 로컬 API의 상태·JSON을 검증한다 | web_api_check.py |
 
 Python 파일은 scripts/ 폴더 안에 있습니다. 구체적인 명령은 [TOOL_CATALOG.md](TOOL_CATALOG.md)를 참고하세요.
 

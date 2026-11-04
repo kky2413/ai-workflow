@@ -30,7 +30,7 @@
 19. **docs/START_HERE.md** — 처음 시작할 때 따라갈 길잡이. 무엇을 먼저 읽고 어떤 도구를 골라야 하는지 설명합니다.
 20. **docs/QUICKSTART.md** — Bash·PowerShell 실행 명령, 폴더 경로, 기본 도구와 흔한 오류를 다룹니다.
 21. **docs/CODEX_COMMANDS.md** — Codex 슬래시 명령어와 터미널 명령어의 차이. 현재 설치 버전의 지원 여부가 우선입니다.
-22. **docs/TOOL_CATALOG.md** — 11개 코드의 실제 실행 명령어·입력과 출력·주의사항을 모았습니다.
+22. **docs/TOOL_CATALOG.md** — 14개 코드의 실제 실행 명령어·입력과 출력·주의사항을 모았습니다.
 23. **docs/CODE_REVIEW.md** — Python 함수가 하는 일, 지원 형식, 검증 범위, 제한사항을 코드 관점에서 설명합니다.
 24. **docs/REPORT_GUIDE.md** — report_spec.json 작성과 비율·그룹별 보고서 예제입니다.
 25. **docs/DATA_INTEGRITY.md** — 데이터 집계 단위, 조인 중복, 분모, 식별번호, 기준값 검증 방법을 설명합니다.
@@ -63,6 +63,32 @@ Skill은 자동 설치되지 않습니다. 필요한 하나만 Codex에게 **그
 40. **scripts/json_structure_check.py** — JSON 객체 또는 객체 배열에서 지정한 필드·필수 키·자료형·추가 필드 허용 여부를 검사합니다. 외부 JSON Schema 패키지나 원격 서비스가 필요 없습니다. 정답의 의미나 모든 JSON Schema 규칙을 검증하지는 못합니다.
 41. **tests/test_json_structure.py** — 필드 구조 정상, 필수값 누락, boolean/정수 혼동, 빈 배열, 허용하지 않은 필드의 5개 사례를 점검하도록 작성됐습니다.
 
-위의 모든 **42개 파일**은 별도 정답이나 특정 산업의 고정 계산이 아니라 범용 작업을 보조하기 위해 작성됐습니다. 실제 프로젝트에 맞지 않는 도구는 사용하지 않아도 됩니다.
+확장 전 **42개 파일**은 별도 정답이나 특정 산업의 고정 계산이 아니라 범용 작업을 보조하기 위해 작성됐습니다. 실제 프로젝트에 맞지 않는 도구는 사용하지 않아도 됩니다.
 
 42. **docs/PROMPT_EXAMPLES.md** — 작업 시작 전 README·자료 분석, 계획 기반 구현, 작업 이해도 확인용 Codex 요청문 3개와 '무엇을·왜·어떻게·검증·한계' 자기 점검표입니다. 필요할 때만 골라 사용하며 본인이 실제로 수행한 내용을 직접 확인합니다.
+
+## 웹사이트 과제 확장 (2026-11-05)
+
+웹 관련 자료는 분리되어 있으며 필요할 때만 선택합니다. 기존 Python 12개에 웹 도구 2개를 추가했습니다.
+
+- **scripts/web_project_audit.py** — 프레임워크·package scripts·진입점·테스트를 읽기 전용으로 조사.
+- **scripts/web_api_check.py** — 외부 연결 없는 localhost API 상태·JSON 검사, 쓰기는 명시적 선택.
+- **tests/test_web_tools.py** — 웹 조사·API 검사 도구의 로컬 HTTP 등 9개 독립 테스트.
+- **docs/WEB_START_HERE.md** — 웹 과제 첫 30초 선택표.
+- **docs/WEB_APP_PLAYBOOK.md** — 화면·API·실제 저장을 연결하는 구현·디버깅 절차.
+- **docs/WEB_TESTING.md** — 실행·API·수동 UI 세 단계의 확인 방법.
+- **docs/WEB_PROMPTS.md** — Codex용 웹 분석·구현·오류 수정·검증·설명 문장.
+- **docs/WEB_UPSTREAM_RESEARCH.md** — 참고한 공개 소스의 링크와 선별 이유.
+- **skills/web-app-delivery/SKILL.md** — 필요한 경우 직접 읽혀 사용하는 웹 작업 절차서.
+- **demo-web/README.md** — Node 표준 라이브러리 연습 웹사이트 실행·제약 설명.
+- **demo-web/package.json** — 패키지 설치 없는 dev/test 명령.
+- **demo-web/server.mjs** — HTTP 서버 및 JSON API.
+- **demo-web/store.mjs** — 샘플 항목 저장과 CRUD.
+- **demo-web/public/index.html** — 입력 폼과 목록·편집 화면.
+- **demo-web/public/styles.css** — 데스크톱/모바일 화면 스타일.
+- **demo-web/public/app.js** — 화면 이벤트와 실제 API 연동.
+- **demo-web/tests/server.test.mjs** — Node 내장 서버·저장·실패 요청 4개 테스트.
+- **demo-web/api-check.example.json** — localhost API 검사기용 3개 GET 예시.
+- **.github/workflows/node-web-tests.yml** — Node 22 문법·테스트 자동 실행 설정.
+
+전체는 기존 42개 + 신규 19개 = **61개 파일**입니다. 정의된 자동 테스트는 Python 기존 31개와 신규 9개, Node 신규 4개입니다. **테스트가 정의됐다는 사실은 실제 해당 환경에서 통과했다는 뜻이 아닙니다.**

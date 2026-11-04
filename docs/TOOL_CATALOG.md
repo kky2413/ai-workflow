@@ -1,4 +1,4 @@
-# Python 도구 12개 — 입력·출력·실행 방법
+# Python 도구 14개 — 입력·출력·실행 방법
 
 **실행 위치:** 아래 명령어는 ai-workflow 저장소 루트 기준입니다. 명령어의 /data 등은 예시이며 실제 파일 경로로 바꾸세요. Linux는 python3, PowerShell은 python을 사용할 수 있습니다.
 
@@ -144,3 +144,23 @@ source 경로는 contract.json이 있는 폴더 기준입니다. 검사 타입�
 ### 숫자 열의 누락값 처리
 
 quality_report.py의 sum/mean/min/max는 기본적으로 **비어 있는 숫자 셀을 발견하면 중단**합니다. 합당한 데이터 처리 정책이 이미 확인된 경우에만 해당 metrics 또는 groups 항목에 allow_missing: true를 작성하세요. 그 경우에도 최종 분모·표본 수를 별도로 검산해야 합니다.
+
+## 13. 웹 프로젝트 구조 조사: web_project_audit.py
+
+~~~bash
+python3 scripts/web_project_audit.py /path/to/actual-project
+python3 scripts/web_project_audit.py /path/to/actual-project --format json
+~~~
+
+패키지 매니저 잠금 파일, package.json scripts **이름**, 사용된 프레임워크 의존성, 진입점·테스트 후보를 읽기 전용으로 확인합니다. 설치·외부 연결·코드 실행을 하지 않고, .env/의존성·캐시 폴더를 제외합니다. **실제 동작이나 빌드 성공을 보증하지 않습니다.**
+
+## 14. 로컬 API 계약 확인: web_api_check.py
+
+~~~bash
+python3 scripts/web_api_check.py --config demo-web/api-check.example.json
+python3 scripts/web_api_check.py --config /path/to/spec.json --format json
+~~~
+
+base_url은 인증 없는 loopback HTTP만 지원합니다. GET/HEAD가 기본이며 **POST/PATCH/PUT/DELETE는 --allow-writes 명시 필요**(실제 데이터가 수정될 수 있음). expected_status, expect_json(부분 객체 일치), expect_json_fields(경로 존재)를 검사합니다. 외부 접속·프록시·리다이렉트 추적은 차단합니다. 빈 cases 목록은 오류입니다. 반환 코드: 0 모든 검사 통과, 1 검사 실패, 2 설정/실행 오류. 화면 표시 및 실제 업무 계산은 별도 확인이 필요합니다.
+
+웹 전용 설명: [웹 검증 가이드](WEB_TESTING.md).

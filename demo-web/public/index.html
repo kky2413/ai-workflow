@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Practice · 작업 기록</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+  <div class="shell">
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">◆</span> WEB PRACTICE</div>
+      <span class="demo-tag">연습용 · 실제 과제와 무관</span>
+    </header>
+    <main id="main">
+      <div class="intro">
+        <p class="eyebrow">FULL-STACK PRACTICE</p>
+        <h1>작업 기록 관리</h1>
+        <p>입력 → API 처리 → 파일 저장 → 화면 갱신을 직접 확인하는 범용 연습 화면입니다.</p>
+      </div>
+      <section class="stats" aria-label="작업 현황">
+        <div><span class="stat-label">전체</span><strong id="count-all">0</strong></div>
+        <div><span class="stat-label">진행 중</span><strong id="count-open">0</strong></div>
+        <div><span class="stat-label">완료</span><strong id="count-done">0</strong></div>
+      </section>
+      <section class="panel" aria-labelledby="panel-title">
+        <div class="panel-heading"><div><h2 id="panel-title">작업 목록</h2><p>실제 API에 저장되며, 서버를 다시 실행해도 로컬 JSON 파일에서 불러옵니다.</p></div></div>
+        <form id="create-form" class="create-form">
+          <label for="new-title">새 작업</label>
+          <div class="form-row"><input id="new-title" name="title" maxlength="80" required autocomplete="off" placeholder="예: 요구사항 검증" aria-describedby="create-help"><button type="submit">추가하기</button></div>
+          <small id="create-help">1~80자 · 내용이 비어 있으면 저장할 수 없습니다.</small>
+        </form>
+        <div class="toolbar"><label for="search">목록 검색</label><input id="search" type="search" placeholder="작업 이름 검색"></div>
+        <p id="feedback" role="status" aria-live="polite"></p>
+        <ul id="items" class="items" aria-label="저장된 작업"></ul>
+        <p id="empty" class="empty">표시할 작업이 없습니다. 첫 작업을 추가해 보세요.</p>
+      </section>
+    </main>
+    <footer>이 화면은 학습용 예제입니다. 실제 업무 규칙·권한·인증·동시 사용 기능은 별도 구현이 필요합니다.</footer>
+  </div>
+  <dialog id="edit-dialog" aria-labelledby="edit-heading">
+    <form method="dialog" id="edit-form"><h2 id="edit-heading">작업 수정</h2><label for="edit-title">작업명</label><input id="edit-title" maxlength="80" required><div class="dialog-actions"><button value="cancel" formnovalidate>취소</button><button id="edit-save" value="save">저장</button></div></form>
+  </dialog>
+</body>
+</html>

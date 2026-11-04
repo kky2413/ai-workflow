@@ -5,6 +5,8 @@ __pycache__/
 venv/
 node_modules/
 .next/
+dist/
+build/
 .DS_Store
 .env
 .env.*
@@ -14,6 +16,3 @@ outputs/
 reports/
 private_data/
 *.log
-
-# Practice web app runtime state (never publish real records)
-demo-web/data/

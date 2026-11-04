@@ -17,4 +17,4 @@ description: Understand, build and verify a web app through a real end-to-end us
 
 다른 프로젝트에 이 Skill을 강제 적용하거나, 참고 키트 전체를 제출물로 복사하지 않습니다. 권한·보안 제한·외부 전송 규칙이 우선입니다.
 
-관련 문서: docs/WEB_START_HERE.md, docs/WEB_APP_PLAYBOOK.md, docs/WEB_TESTING.md, docs/WEB_PROMPTS.md.
+관련 문서: docs/START_HERE.md, docs/WEB_APP_PLAYBOOK.md, docs/WEB_TESTING.md, docs/PROMPT_EXAMPLES.md.

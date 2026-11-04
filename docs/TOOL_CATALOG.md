@@ -157,10 +157,10 @@ python3 scripts/web_project_audit.py /path/to/actual-project --format json
 ## 14. 로컬 API 계약 확인: web_api_check.py
 
 ~~~bash
-python3 scripts/web_api_check.py --config demo-web/api-check.example.json
+python3 scripts/web_api_check.py --config /path/to/api-check.json
 python3 scripts/web_api_check.py --config /path/to/spec.json --format json
 ~~~
 
-base_url은 인증 없는 loopback HTTP만 지원합니다. GET/HEAD가 기본이며 **POST/PATCH/PUT/DELETE는 --allow-writes 명시 필요**(실제 데이터가 수정될 수 있음). expected_status, expect_json(부분 객체 일치), expect_json_fields(경로 존재)를 검사합니다. 외부 접속·프록시·리다이렉트 추적은 차단합니다. 빈 cases 목록은 오류입니다. 반환 코드: 0 모든 검사 통과, 1 검사 실패, 2 설정/실행 오류. 화면 표시 및 실제 업무 계산은 별도 확인이 필요합니다.
+먼저 실제 API 경로와 기대 상태·응답으로 검사 설정 JSON을 직접 작성하세요. base_url은 인증 없는 loopback HTTP만 지원합니다. GET/HEAD가 기본이며 **POST/PATCH/PUT/DELETE는 --allow-writes 명시 필요**(실제 데이터가 수정될 수 있음). expected_status, expect_json(부분 객체 일치), expect_json_fields(경로 존재)를 검사합니다. 외부 접속·프록시·리다이렉트 추적은 차단합니다. 빈 cases 목록은 오류입니다. 반환 코드: 0 모든 검사 통과, 1 검사 실패, 2 설정/실행 오류. 화면 표시 및 실제 업무 계산은 별도 확인이 필요합니다.
 
 웹 전용 설명: [웹 검증 가이드](WEB_TESTING.md).

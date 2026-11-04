@@ -1,66 +1,57 @@
-# 처음 시작하기
+# 처음 시작하기 — 어느 자료를 읽어야 할까요?
 
-## 1. 도구보다 실제 작업 내용이 먼저입니다
+**답은 하나입니다. 실제 과제의 README부터 확인하세요.** 이 저장소는 참고용입니다.
 
-일반 터미널에서 현재 위치와 파일을 확인합니다.
+## 1. 실제 폴더와 실행 환경 확인
 
-~~~bash
+Bash/일반 터미널:
+
+~~~sh
 pwd
 ls -la
 cat README.md
 ~~~
 
-웹 IDE에서 일부 명령어가 없다면 파일 탐색기에서 README를 직접 열면 됩니다.
+Windows PowerShell:
 
-## 2. 별도 참고 폴더에 받아 둡니다
-
-~~~bash
-git clone --depth 1 https://github.com/kky2413/ai-workflow ai-workflow-reference
+~~~powershell
+Get-Location
+Get-ChildItem -Force
+Get-Content README.md
 ~~~
 
-동일 이름의 폴더가 있으면 기존 파일을 삭제하지 말고 경로를 확인합니다. 참고 도구의 README와 실제 프로젝트의 README는 구분해야 합니다.
+현재 위치가 **실제 과제 루트**인지 확인하고 필수 파일명, 저장 경로, 구현·검증 조건을 적습니다. 이미 있는 package.json, requirements.txt, 테스트, API를 먼저 살펴봅니다.
 
-## 웹사이트를 만들어야 한다면
+## 2. 목적에 맞게 딱 하나부터 선택
 
-**[웹 과제 시작 문서](WEB_START_HERE.md)**를 먼저 보세요. 실제 프로젝트의 React/Vite/Next 등 기존 구성을 보존하고, [웹 개발 절차](WEB_APP_PLAYBOOK.md)와 [검증 방법](WEB_TESTING.md) 중 관련 부분만 사용하세요. Node 연습 프로젝트는 [demo-web](../demo-web/README.md)에 분리되어 있습니다. 자료가 필요 없으면 사용하지 않아도 됩니다.
+| 상황 | 읽을 문서 | 관련 도구 |
+| --- | --- | --- |
+| 데이터·보고서 | [업무별 절차](WORKFLOWS.md) | `data_profile.py`, `join_audit.py`, `quality_report.py` |
+| 웹사이트·API | [웹 개발](WEB_APP_PLAYBOOK.md) | `web_project_audit.py`, `web_api_check.py` |
+| 결과 검증 | [웹 검증](WEB_TESTING.md) 또는 실제 프로젝트 테스트 | `verify_outputs.py` 등 |
+| Codex 지시 | [프롬프트 예시](PROMPT_EXAMPLES.md) | 필요한 질문 하나만 사용 |
+| 실행 명령·제약 | [도구 목록](TOOL_CATALOG.md) | 각 도구의 --help |
 
-## 3. 필요한 도구만 고릅니다
+**Python이 없어도 Node/React 프로젝트는 해당 프로젝트에 준비된 명령으로 작업할 수 있습니다.** 모든 도구를 실행하거나 패키지를 설치할 필요는 없습니다.
 
-| 상황 | 도구 |
-| --- | --- |
-| 파일 구조를 모른다 | inventory.py |
-| CSV·JSON 상태를 알고 싶다 | data_profile.py |
-| 데이터 파일이 두 버전이다 | compare_tables.py |
-| 서로 다른 표를 연결해야 한다 | join_audit.py → merge_tables.py |
-| 계산과 표가 필요하다 | quality_report.py |
-| 명확한 상한·하한 기준이 있다 | rule_check.py |
-| 출력 파일을 확인한다 | verify_outputs.py |
-| 개발 환경이 낯설다 | environment_check.py |
-| 로컬 웹 서버가 동작하는지 본다 | http_smoke.py |
-| 웹 프로젝트의 프레임워크·진입점을 조사한다 | web_project_audit.py |
-| 로컬 API의 상태·JSON을 검증한다 | web_api_check.py |
+## 3. 필요할 때만 별도 폴더에 Clone
 
-Python 파일은 scripts/ 폴더 안에 있습니다. 구체적인 명령은 [TOOL_CATALOG.md](TOOL_CATALOG.md)를 참고하세요.
+~~~sh
+git clone --depth 1 https://github.com/kky2413/ai-workflow.git ai-workflow-reference
+~~~
 
-## 4. Codex에 지시하는 방법
+프로젝트 폴더와 분리해 보관합니다. 참고용 AGENTS.md·Skill이 다른 작업 폴더에 자동 적용된다고 가정하지 마세요.
 
-**바로 사용할 수 있는 상세 프롬프트 3개는 [프롬프트 예시](PROMPT_EXAMPLES.md)에 정리했습니다.**
+## 4. Codex에 첫 요청
 
-다음은 **Codex 채팅에 보내는 문장**입니다.
+> 현재 실제 프로젝트 README와 기존 코드를 읽고 목표·필수 기능·입력 자료·결과 경로·검증 방법을 정리해 주세요. 모호한 업무 기준은 질문으로 분리하고, 가장 작은 정상 동작부터 만들 계획을 제시하세요. 아직 코드는 수정하지 마세요. 참고 키트 전체를 복사하거나 설치하지 마세요.
 
-> 현재 프로젝트의 README와 파일을 먼저 살펴봐 주세요. 참고 폴더 ai-workflow-reference/docs/TOOL_CATALOG.md를 읽고 이번 작업에 필요한 도구만 제안해 주세요. 수정하기 전에 필수 산출물과 불명확한 기준을 알려 주세요. 근거 없는 계산이나 외부 자료 전송은 하지 마세요.
+## 5. 완료 기준
 
-폴더 이름이 다르면 실제 경로로 바꾸세요. 다른 폴더에 있는 AGENTS 지침은 자동 적용된다고 가정하면 안 됩니다.
+- 요구사항에 맞는 **실제 입력 → 처리 → 출력**이 존재하는가?
+- 정상·경계·오류 사례를 **실제로 실행**했는가?
+- 예상값과 실제 결과를 비교했는가?
+- 웹은 사람이 실제 화면을 열어 필수 버튼·새로고침을 확인했는가?
+- 테스트 성공과 미검증 항목을 구분했는가?
 
-## 5. 기본 질문 다섯 개
-- 무엇을 만들어야 하나요?
-- 입력의 출처·행 의미·단위는 무엇인가요?
-- 어떤 조건은 확정이고 어떤 조건은 확인이 필요한가요?
-- 무엇을 실행하면 결과를 검증할 수 있나요?
-- 어디에 어떤 이름으로 결과를 저장해야 하나요?
-
-작업이 단순하다면 양식을 모두 작성하기보다 바로 필요한 기능을 수행하세요.
-
-## API나 자동화의 JSON 출력이 필요하면
-
-**scripts/json_structure_check.py**로 JSON 필수 키·자료형을 점검할 수 있습니다. 설정 JSON 작성법은 [도구 설명](TOOL_CATALOG.md)의 12번을 참고하세요.
+간단한 기록이 필요하면 [작업 계획](templates/TASK_PLAN.md), [데이터 계약](templates/DATA_CONTRACT.md), [최종 점검](templates/FINAL_CHECK.md) 중 필요한 것만 사용하세요.
